@@ -1,10 +1,3 @@
-//
-//  APIService.swift
-//  Piccolo
-//
-//  Created by Bronek on 2024-11-17.
-//
-
 import Foundation
 
 enum APIServiceError: Error {
@@ -22,7 +15,7 @@ class APIService {
             var request = URLRequest(url: url)
             request.httpMethod = method
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue("application/json, multipart/form-data", forHTTPHeaderField: "Accept")
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             
             let (data, _) = try await URLSession.shared.data(for: request)

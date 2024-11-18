@@ -1,10 +1,3 @@
-//
-//  Photo.swift
-//  Piccolo
-//
-//  Created by Bronek on 2024-11-16.
-//
-
 import Foundation
 import SwiftUI
 
