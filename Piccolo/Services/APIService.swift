@@ -9,9 +9,11 @@ class APIService {
     private init() {}
     
     func fetchData<T: Decodable>(method: String, path: String) async throws -> T {
-        let token = ""
+        guard let token = ProcessInfo.processInfo.environment["PICCOLO_ACCESS_TOKEN"] else {
+            fatalError("Could not find API token.")
+        }
         
-        if let url = URL(string: "http://localhost:8001/api/v1/\(path)") {
+        if let url = URL(string: "http://localhost:8000/api/v1/\(path)") {
             var request = URLRequest(url: url)
             request.httpMethod = method
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
